@@ -12,7 +12,7 @@ const WalletBalance = () => {
   useEffect(() => {
     const fetchBalance = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/wallet/balance`);
+        const response = await fetch(`${API_BASE_URL}/wallet/transactions`);
         const resData = await response.json();
         if (resData.success && resData.data) {
           setWallet(resData.data);
