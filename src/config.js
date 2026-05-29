@@ -1,1 +1,1 @@
-export const API_BASE_URL = 'https://masterapis.chotabeta.com';
+export const API_BASE_URL = 'https://masterapis.chotabeta.com/api';
