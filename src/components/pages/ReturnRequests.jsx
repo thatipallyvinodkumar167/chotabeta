@@ -69,6 +69,7 @@ const ReturnRequests = () => {
     try {
       setLoading(true);
       const response = await fetch(`${API_BASE_URL}/orders/returns/list`);
+      
       const resData = await response.json();
       if (resData.success) {
         setReturnsData(resData.data);
