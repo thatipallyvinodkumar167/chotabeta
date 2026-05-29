@@ -115,7 +115,7 @@ const Orders = () => {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${API_BASE_URL}/`);
+      const response = await fetch(`${API_BASE_URL}/order-items`);
       const resData = await response.json();
       if (resData.success) {
         setOrdersData(resData.data);
