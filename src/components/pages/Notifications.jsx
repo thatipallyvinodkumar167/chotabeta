@@ -21,7 +21,7 @@ const Notifications = () => {
   const fetchNotifications = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${API_BASE_URL}/notifications`);
+      const response = await fetch(`${API_BASE_URL}/api/notifications`);
       const resData = await response.json();
       if (resData.success) {
         setNotificationsData(resData.data);
