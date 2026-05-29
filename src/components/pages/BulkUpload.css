@@ -1,0 +1,246 @@
+.bulk-upload-page {
+  width: 100%;
+}
+
+.bulk-upload-card {
+  background-color: #1e293b;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px;
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin: 0 0 4px 0;
+}
+
+.breadcrumbs {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.breadcrumbs span.active {
+  color: #f1f5f9;
+  font-weight: 500;
+}
+
+.btn-back-outline {
+  background: transparent;
+  border: 1px solid #64748b;
+  color: #64748b;
+  padding: 8px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-back-outline:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #f1f5f9;
+}
+
+/* Instructions Box */
+.instructions-box {
+  background-color: rgba(6, 111, 209, 0.05);
+  border: 1px solid rgba(6, 111, 209, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.instructions-content .label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 12px;
+}
+
+.instructions-list {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.instructions-list li {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.instructions-list strong {
+  color: #f1f5f9;
+}
+
+.link-text {
+  color: #066fd1;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link-text:hover {
+  text-decoration: underline;
+}
+
+.download-template-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid rgba(6, 111, 209, 0.1);
+}
+
+.template-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.template-icon {
+  color: #066fd1;
+}
+
+/* Upload Section */
+.upload-container {
+  margin-bottom: 32px;
+}
+
+.upload-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: #f1f5f9;
+  margin-bottom: 16px;
+}
+
+.csv-upload-box {
+  background-color: #1a2233;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #64748b;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 8px;
+}
+
+.csv-upload-box:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: #066fd1;
+}
+
+.browse-link {
+  color: #066fd1;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.upload-info {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Footer Actions */
+.bulk-footer-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-upload-blue {
+  background-color: #066fd1;
+  color: #ffffff;
+  border: none;
+  padding: 10px 32px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-upload-blue:hover {
+  background-color: #0558a7;
+}
+
+.btn-outline-blue {
+  background: transparent;
+  border: 1.5px solid #066fd1;
+  color: #066fd1;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-outline-blue:hover {
+  background-color: #066fd1;
+  color: #ffffff;
+}
+
+/* Light Theme Overrides */
+.light-theme .bulk-upload-page {
+  background-color: transparent;
+}
+
+.light-theme .bulk-upload-card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .page-title {
+  color: #1e293b;
+}
+
+.light-theme .breadcrumbs span.active {
+  color: #1e293b;
+}
+
+.light-theme .instructions-box {
+  background-color: #f0f7ff;
+  border-color: #bae6fd;
+}
+
+.light-theme .instructions-content .label {
+  color: #1e293b;
+}
+
+.light-theme .instructions-list li {
+  color: #475569;
+}
+
+.light-theme .instructions-list strong {
+  color: #1e293b;
+}
+
+.light-theme .csv-upload-box {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  color: #64748b;
+}
+
+.light-theme .upload-label {
+  color: #1e293b;
+}

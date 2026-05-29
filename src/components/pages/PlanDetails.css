@@ -1,0 +1,476 @@
+.plan-details-page {
+  width: 100%;
+}
+
+.plan-details-header {
+  margin-bottom: 24px;
+}
+
+.plan-details-header .page-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.plan-details-card {
+  display: flex;
+  background-color: #1e293b;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+/* Left Panel */
+.left-panel {
+  width: 35%;
+  padding: 32px;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-summary-header {
+  margin-bottom: 32px;
+}
+
+.plan-title {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.plan-price-large {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.plan-duration-text {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.limits-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.limit-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.limit-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+.check-icon {
+  color: #22c55e;
+}
+
+.limit-values {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.progress-bar-fill.normal {
+  background-color: #3b82f6;
+}
+
+.progress-bar-fill.maxed {
+  background-color: #ef4444;
+}
+
+.payment-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 24px;
+}
+
+.payment-label {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.payment-select {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #1a2233;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #f1f5f9;
+  font-size: 14px;
+  outline: none;
+}
+
+.btn-buy-now {
+  width: 100%;
+  padding: 12px;
+  background-color: #066fd1;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 8px;
+}
+
+.btn-buy-now:hover {
+  background-color: #055ba8;
+}
+
+/* Right Panel */
+.right-panel {
+  width: 65%;
+  padding: 32px;
+}
+
+.config-header {
+  margin-bottom: 24px;
+}
+
+.config-header h3 {
+  font-size: 18px;
+  color: #f1f5f9;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.config-header p {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.config-table-wrapper {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.config-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.config-table th {
+  padding: 16px;
+  background-color: #161d2b;
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.config-table td {
+  padding: 16px;
+  font-size: 14px;
+  color: #e2e8f0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.config-table tr:last-child td {
+  border-bottom: none;
+}
+
+.config-table th:last-child,
+.config-table td:last-child {
+  text-align: center;
+}
+
+/* --- LIGHT THEME OVERRIDES --- */
+.light-theme .plan-details-header .page-title {
+  color: #1e293b;
+}
+
+.light-theme .plan-details-card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .left-panel {
+  border-right-color: #e2e8f0;
+}
+
+.light-theme .plan-title {
+  color: #64748b;
+}
+
+.light-theme .plan-price-large {
+  color: #1e293b;
+}
+
+.light-theme .plan-duration-text {
+  color: #64748b;
+}
+
+.light-theme .limit-name {
+  color: #1e293b;
+}
+
+.light-theme .limit-values {
+  color: #475569;
+}
+
+.light-theme .progress-bar-container {
+  background-color: #e2e8f0;
+}
+
+.light-theme .payment-section {
+  border-top-color: #e2e8f0;
+}
+
+.light-theme .payment-label {
+  color: #475569;
+}
+
+.light-theme .payment-select {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}
+
+.light-theme .config-header h3 {
+  color: #1e293b;
+}
+
+.light-theme .config-header p {
+  color: #475569;
+}
+
+.light-theme .config-table-wrapper {
+  border-color: #e2e8f0;
+}
+
+.light-theme .config-table th {
+  background-color: #f8fafc;
+  color: #64748b;
+  border-bottom-color: #e2e8f0;
+}
+
+.light-theme .config-table td {
+  color: #1e293b;
+  border-bottom-color: #e2e8f0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .plan-details-card {
+    flex-direction: column;
+  }
+  
+  .left-panel, .right-panel {
+    width: 100%;
+  }
+
+  .left-panel {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .light-theme .left-panel {
+    border-bottom-color: #e2e8f0;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 23, 42, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-container {
+  background-color: #1e293b;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+  border: 1px solid #334155;
+}
+
+.modal-header {
+  padding: 24px 24px 16px 24px;
+  position: relative;
+  border-top: 4px solid #22c55e;
+}
+
+.modal-header.error {
+  border-top-color: #ef4444;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.modal-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-icon.success {
+  color: #22c55e;
+  border: 2px solid #22c55e;
+}
+
+.modal-icon.error {
+  color: #ef4444;
+  border: 2px solid #ef4444;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 12px;
+}
+
+.modal-text {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.5;
+  padding: 0 16px;
+}
+
+.modal-footer {
+  padding: 20px 24px;
+  display: flex;
+  gap: 12px;
+  border-top: 1px solid #334155;
+  margin-top: 24px;
+}
+
+.modal-btn-cancel {
+  flex: 1;
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid #475569;
+  color: #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-btn-cancel:hover {
+  background-color: #334155;
+}
+
+.modal-btn-confirm {
+  flex: 1;
+  padding: 10px;
+  background-color: #22c55e;
+  border: none;
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-btn-confirm:hover {
+  background-color: #16a34a;
+}
+
+.modal-btn-error {
+  background-color: #ef4444;
+}
+
+.modal-btn-error:hover {
+  background-color: #dc2626;
+}
+
+/* Light Theme Modal Overrides */
+.light-theme .modal-container {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.light-theme .modal-title {
+  color: #1e293b;
+}
+
+.light-theme .modal-text {
+  color: #475569;
+}
+
+.light-theme .modal-footer {
+  border-top-color: #e2e8f0;
+}
+
+.light-theme .modal-btn-cancel {
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+.light-theme .modal-btn-cancel:hover {
+  background-color: #f1f5f9;
+}

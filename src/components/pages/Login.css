@@ -1,0 +1,246 @@
+/* src/components/pages/Login.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #0d6efd;
+  --primary-hover: #0b5ed7;
+
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+
+  --bg-color: #f3f4f6;
+  --card-bg: #ffffff;
+
+  --border-color: #d1d5db;
+
+  --input-focus: #93c5fd;
+
+  --error-color: #ef4444;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top left, #f8fafc 0%, #f1f5f9 100%);
+  font-family: 'Inter', sans-serif;
+  padding: 20px;
+}
+
+.logo-wrapper {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-placeholder {
+  width: 200px;
+  height: 90px;
+  background: white;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.login-logo {
+  max-width: 220px;
+  height: auto;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 48px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  box-shadow: none;
+  width: 100%;
+  max-width: 480px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-title {
+  color: #1e293b;
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 36px;
+  letter-spacing: -0.02em;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.label-row label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0d6efd !important;
+  ;
+  /* blue */
+}
+
+.forgot-password {
+  font-size: 13px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.forgot-password:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+
+  background: #ffffff !important;
+  /* white background */
+  color: #000000 !important;
+  /* black text */
+
+  outline: none;
+  transition: 0.2s;
+}
+
+
+.login-input:focus {
+  border-color: #86b7fe;
+
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+}
+
+.login-input:focus {
+  border-color: #86b7fe;
+  box-shadow: #ff0000;
+}
+
+.login-input::placeholder {
+  color: #94a3b8;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.password-toggle:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.remember-me input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.remember-me span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.signin-button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.signin-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+  filter: brightness(1.05);
+}
+
+.signin-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 30px 20px;
+  }
+
+  .login-title {
+    font-size: 20px;
+  }
+}

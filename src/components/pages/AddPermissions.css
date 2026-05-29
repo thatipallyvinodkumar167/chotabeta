@@ -1,0 +1,226 @@
+.add-permissions-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.permissions-header-card {
+  background-color: #1e293b;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.permissions-page-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.permissions-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.breadcrumb-link {
+  color: #3b82f6;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: #64748b;
+  margin: 0 4px;
+}
+
+.breadcrumb-current {
+  color: #1e293b;
+}
+
+/* Light theme breadcrumb fixes to match dark context initially */
+.breadcrumb-current {
+  color: #94a3b8;
+}
+
+.permissions-content-card {
+  background-color: #1e293b;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.card-header-simple {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-header-simple h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.permissions-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.permission-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.permission-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.permission-actions-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #94a3b8;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label:hover {
+  color: #e2e8f0;
+}
+
+.checkbox-label.select-all {
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.custom-checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.custom-checkbox:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.custom-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.form-actions-bottom {
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn-add-permissions {
+  background-color: #066fd1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-add-permissions:hover {
+  background-color: #005bb5;
+}
+
+
+/* --- LIGHT THEME OVERRIDES --- */
+.light-theme .permissions-header-card,
+.light-theme .permissions-content-card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .permissions-page-title,
+.light-theme .card-header-simple h3 {
+  color: #1e293b;
+}
+
+.light-theme .breadcrumb-separator {
+  color: #cbd5e1;
+}
+
+.light-theme .breadcrumb-current {
+  color: #475569;
+}
+
+.light-theme .card-header-simple {
+  border-bottom-color: #e2e8f0;
+}
+
+.light-theme .permission-title {
+  color: #334155;
+}
+
+.light-theme .checkbox-label {
+  color: #64748b;
+}
+
+.light-theme .checkbox-label:hover {
+  color: #1e293b;
+}
+
+.light-theme .checkbox-label.select-all {
+  color: #334155;
+}
+
+.light-theme .custom-checkbox {
+  border-color: #cbd5e1;
+  background-color: #ffffff;
+}
+
+.light-theme .custom-checkbox:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.light-theme .form-actions-bottom {
+  border-top-color: #e2e8f0;
+}
