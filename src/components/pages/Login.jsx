@@ -22,7 +22,7 @@ const Login = () => {
     console.log('Login attempt with:', { email, password });
     
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/login`, {
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
