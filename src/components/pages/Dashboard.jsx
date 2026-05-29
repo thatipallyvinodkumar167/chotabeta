@@ -187,7 +187,7 @@ const Dashboard = () => {
     const fetchDashboardData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${API_BASE_URL}/dashboard/stats`);
+        const response = await fetch(`${API_BASE_URL}/api/dashboard/stats`);
         const resData = await response.json();
         if (resData.success) {
           setStats(resData.data.stats);
