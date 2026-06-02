@@ -1,0 +1,275 @@
+.edit-profile-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.edit-card {
+  background-color: #1e293b;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.breadcrumb .home {
+  color: #3b82f6;
+  cursor: pointer;
+}
+
+.breadcrumb .separator {
+  color: #64748b;
+}
+
+.breadcrumb .active {
+  color: #94a3b8;
+}
+
+.edit-body {
+  padding: 24px;
+}
+
+.edit-layout {
+  display: flex;
+  gap: 40px;
+}
+
+.edit-image-col {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.image-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #e2e8f0;
+  align-self: flex-start;
+}
+
+.edit-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.drag-drop-area {
+  width: 100%;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 24px 16px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.drag-drop-area:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+}
+
+.drag-text {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.browse-link {
+  font-size: 13px;
+  color: #3b82f6;
+  cursor: pointer;
+}
+
+.browse-link:hover {
+  text-decoration: underline;
+}
+
+.supported-formats {
+  font-size: 12px;
+  color: #64748b;
+  text-align: center;
+}
+
+.edit-form-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+.required {
+  color: #ef4444;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #f1f5f9;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-control:focus {
+  border-color: #3b82f6;
+}
+
+.form-control:disabled {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.help-text {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.edit-footer {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  color: #3b82f6;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  text-decoration: underline;
+}
+
+.btn-save {
+  background-color: #066fd1;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-save:hover {
+  background-color: #005bb5;
+}
+
+.password-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+/* Light Theme Overrides */
+.light-theme .edit-card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .edit-header {
+  border-bottom-color: #e2e8f0;
+}
+
+.light-theme .section-title {
+  color: #1e293b;
+}
+
+.light-theme .image-label {
+  color: #1e293b;
+}
+
+.light-theme .edit-avatar {
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .drag-drop-area {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.light-theme .drag-drop-area:hover {
+  background-color: #f1f5f9;
+  border-color: #3b82f6;
+}
+
+.light-theme .drag-text {
+  color: #64748b;
+}
+
+.light-theme .form-group label {
+  color: #334155;
+}
+
+.light-theme .form-control {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}
+
+.light-theme .form-control:disabled {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+.light-theme .edit-footer {
+  border-top-color: #e2e8f0;
+}

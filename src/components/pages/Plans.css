@@ -1,0 +1,279 @@
+.plans-page {
+  width: 100%;
+}
+
+.plans-card {
+  background-color: #1e293b;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.plans-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.plans-header .page-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin: 0 0 4px 0;
+}
+
+.plans-header .breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.plans-header .breadcrumb .home {
+  color: #066fd1;
+  cursor: pointer;
+}
+
+.plans-header .breadcrumb .separator {
+  color: #64748b;
+}
+
+.plans-header .breadcrumb .active {
+  color: #f1f5f9;
+  font-weight: 500;
+}
+
+/* Pricing Table Layout */
+.pricing-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #1e293b;
+}
+
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  min-width: 900px;
+}
+
+.pricing-table th, 
+.pricing-table td {
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+}
+
+/* Corner & Header Cells */
+.corner-th {
+  width: 20%;
+  background-color: transparent;
+  border: none !important;
+}
+
+.plan-header-th {
+  width: 16%;
+  background-color: transparent;
+  vertical-align: top;
+}
+
+.plan-header-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.plan-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 1px;
+}
+
+.plan-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.plan-duration {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Choose Plan Button */
+.btn-choose-plan {
+  width: 100%;
+  max-width: 120px;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+.btn-choose-plan:hover {
+  background-color: #066fd1;
+  border-color: #066fd1;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(6, 111, 209, 0.25);
+}
+
+.btn-choose-plan:active {
+  transform: translateY(0);
+}
+
+/* Section Header */
+.section-header-row {
+  background-color: #161d2b;
+}
+
+.section-header-td {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.8px;
+  padding: 12px 16px !important;
+  width: 100% !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Specification Comparison Rows */
+.spec-row {
+  transition: background-color 0.2s;
+}
+
+.spec-row:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.spec-label-td {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: #94a3b8;
+  padding-left: 20px !important;
+}
+
+.spec-val-td {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* Bottom Actions Row */
+.bottom-actions-row {
+  background-color: transparent;
+}
+
+.bottom-actions-row .spec-label-td {
+  background-color: #1e293b !important;
+  border-bottom: 1px solid transparent !important;
+  border-left: 1px solid transparent !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.action-cell {
+  padding: 20px 16px !important;
+}
+
+/* --- LIGHT THEME OVERRIDES --- */
+.light-theme .plans-card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .plans-header .page-title {
+  color: #1e293b;
+}
+
+.light-theme .plans-header .breadcrumb .active {
+  color: #1e293b;
+}
+
+.light-theme .pricing-table-wrapper {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.light-theme .pricing-table th, 
+.light-theme .pricing-table td {
+  border-color: #cbd5e1;
+}
+
+.light-theme .plan-name {
+  color: #64748b;
+}
+
+.light-theme .plan-price {
+  color: #1e293b;
+}
+
+.light-theme .plan-duration {
+  color: #64748b;
+}
+
+.light-theme .section-header-row {
+  background-color: #f8fafc;
+}
+
+.light-theme .section-header-td {
+  color: #475569;
+  background-color: #f8fafc !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: 1px solid #cbd5e1 !important;
+  border-bottom: 1px solid #cbd5e1 !important;
+}
+
+.light-theme .spec-row:hover {
+  background-color: #f8fafc;
+}
+
+.light-theme .spec-label-td {
+  color: #475569;
+}
+
+.light-theme .spec-val-td {
+  color: #1e293b;
+}
+
+.light-theme .bottom-actions-row .spec-label-td {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid transparent !important;
+  border-left: 1px solid transparent !important;
+  border-right: 1px solid #cbd5e1 !important;
+  border-top: 1px solid #cbd5e1 !important;
+}
+
+/* Make sure the Choose Plan buttons look crisp in dark mode as well */
+.dark-theme .btn-choose-plan {
+  background-color: #1a2233;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+}
+
+.dark-theme .btn-choose-plan:hover {
+  background-color: #066fd1;
+  border-color: #066fd1;
+  color: #ffffff;
+}
