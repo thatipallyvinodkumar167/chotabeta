@@ -1,0 +1,159 @@
+.current-subscription-page {
+  width: 100%;
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.page-header .page-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin: 0 0 4px 0;
+}
+
+.page-header .breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.page-header .breadcrumb .home {
+  color: #066fd1;
+  cursor: pointer;
+}
+
+.page-header .breadcrumb .separator {
+  color: #64748b;
+}
+
+.page-header .breadcrumb .active {
+  color: #f1f5f9;
+  font-weight: 500;
+}
+
+.current-subscription-card {
+  background-color: #1e293b;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px;
+  width: 100%;
+}
+
+.alert-info {
+  background-color: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  padding: 16px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.subscription-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.plan-name-display {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3b82f6;
+  margin: 0;
+}
+
+.status-badge-active {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.status-badge-active.active {
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.plan-description-display {
+  font-size: 15px;
+  color: #94a3b8;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.detail-item {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+.detail-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+/* --- LIGHT THEME OVERRIDES --- */
+.light-theme .page-header .page-title {
+  color: #1e293b;
+}
+
+.light-theme .page-header .breadcrumb .active {
+  color: #1e293b;
+}
+
+.light-theme .current-subscription-card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .alert-info {
+  background-color: #f0f9ff;
+  border-color: #bae6fd;
+  color: #475569;
+}
+
+.light-theme .plan-name-display {
+  color: #2563eb;
+}
+
+.light-theme .plan-description-display {
+  color: #475569;
+}
+
+.light-theme .detail-item {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.light-theme .detail-value {
+  color: #1e293b;
+}
+

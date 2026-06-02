@@ -1,0 +1,146 @@
+.profile-page {
+  width: 100%;
+}
+
+.profile-card {
+  background-color: #1e293b;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.breadcrumb .home {
+  color: #3b82f6;
+  cursor: pointer;
+}
+
+.breadcrumb .separator {
+  color: #64748b;
+}
+
+.breadcrumb .active {
+  color: #94a3b8;
+}
+
+.btn-edit-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: transparent;
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-edit-profile:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.profile-content {
+  padding: 40px 24px;
+  display: flex;
+  gap: 60px;
+}
+
+.profile-image-section {
+  flex-shrink: 0;
+  padding-left: 20px;
+}
+
+.profile-large-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.profile-details-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: y 32px;
+  row-gap: 32px;
+  column-gap: 60px;
+  max-width: 800px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.detail-value {
+  font-size: 15px;
+  color: #f1f5f9;
+}
+
+/* Light Theme Overrides */
+.light-theme .profile-card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .profile-header {
+  border-bottom-color: #e2e8f0;
+}
+
+.light-theme .section-title {
+  color: #1e293b;
+}
+
+.light-theme .detail-label {
+  color: #475569;
+}
+
+.light-theme .detail-value {
+  color: #1e293b;
+}
+
+.light-theme .profile-large-avatar {
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

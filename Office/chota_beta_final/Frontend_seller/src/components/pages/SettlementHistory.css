@@ -1,0 +1,396 @@
+/* src/components/pages/SettlementHistory.css */
+
+.settlement-history-page {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-header-outline {
+  background: transparent;
+  border: 1.5px solid #3b82f6;
+  color: #3b82f6;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-header-outline:hover {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.main-card {
+  background-color: #1a2233;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 24px;
+}
+
+/* Table Controls */
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.controls-left,
+.controls-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #0B1220;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 0 12px;
+  width: 280px;
+}
+
+.search-box svg {
+  color: #94a3b8;
+}
+
+.search-box input {
+  background: transparent;
+  border: none;
+  color: #f1f5f9;
+  padding: 10px 12px;
+  width: 100%;
+  outline: none;
+  font-size: 14px;
+}
+
+.entries-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.entries-selector select {
+  background-color: #0B1220;
+  border: 1px solid #1e293b;
+  color: #f1f5f9;
+  padding: 8px 32px 8px 12px;
+  border-radius: 8px;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
+}
+
+.dropdown-container {
+  position: relative;
+}
+
+.btn-table-action {
+  background-color: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #f1f5f9;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 38px;
+}
+
+.btn-table-action:hover {
+  background-color: #2d3748;
+}
+
+.btn-table-action.blue {
+  border: 1.5px solid #3b82f6;
+  color: #3b82f6;
+  background-color: #1e293b;
+}
+
+.btn-table-action.blue:hover {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.columns-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background-color: #1a2233;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 0;
+  width: 180px;
+  z-index: 1000;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.2s ease-out;
+}
+
+.dropdown-item {
+  padding: 10px 16px;
+  color: #f1f5f9;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-item:hover {
+  background-color: #2d3748;
+}
+
+.check-icon {
+  color: #475569;
+}
+
+.dropdown-item:hover .check-icon {
+  color: #3b82f6;
+}
+
+/* Table Styles */
+.table-wrapper {
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #05070a;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-table th {
+  background-color: #1e293b;
+  color: #94a3b8;
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-transform: uppercase;
+}
+
+.history-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  color: #e2e8f0;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.history-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.no-data-container {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.no-data-icon {
+  color: #475569;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.no-data-content p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Footer & Pagination */
+.table-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-info {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.pagination {
+  display: flex;
+  gap: 6px;
+}
+
+.pagination-btn {
+  background-color: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagination-btn:hover:not(.disabled) {
+  background-color: #2d3748;
+  color: #ffffff;
+}
+
+.pagination-btn.active {
+  background-color: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+.pagination-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Badges */
+.entry-type-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.entry-type-badge.credit {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.entry-type-badge.debit {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.text-green {
+  color: #10b981;
+}
+
+.text-red {
+  color: #ef4444;
+}
+
+.text-blue {
+  color: #3b82f6;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+/* Spinner and Loaders */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  color: #94a3b8;
+  gap: 16px;
+}
+
+.spinner {
+  animation: spin 1.2s linear infinite;
+  color: #3b82f6;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Light Theme Overrides */
+.light-theme .settlement-history-page .main-card {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light-theme .settlement-history-page .page-header {
+  border-color: #e2e8f0 !important;
+}
+
+.export-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background-color: #1a2233;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 6px;
+  min-width: 140px;
+  z-index: 1000;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.export-dropdown-item {
+  padding: 10px 14px;
+  color: #f1f5f9;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.export-dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
