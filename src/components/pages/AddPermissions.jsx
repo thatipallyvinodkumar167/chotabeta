@@ -53,7 +53,7 @@ const AddPermissions = () => {
     permissions.forEach(perm => {
       const parts = perm.name.split('.');
       const resource = parts[0] || 'general';
-      const actionName = parts[1] || 'access';
+      const actionName = parts.slice(1).join('.') || 'access';
 
       const formattedResource = resource
         .split('_')

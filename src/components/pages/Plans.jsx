@@ -5,6 +5,7 @@ import './Plans.css';
 
 const Plans = () => {
   const [plans, setPlans] = useState([]);
+  const [activeSubscription, setActiveSubscription] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -18,11 +19,28 @@ const Plans = () => {
         }
       } catch (err) {
         console.error('Error fetching plans:', err);
-      } finally {
-        setLoading(false);
       }
     };
-    fetchPlans();
+
+    const fetchActiveSubscription = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/meta/subscriptions/active`);
+        const resData = await response.json();
+        if (resData.success && resData.data) {
+          setActiveSubscription(resData.data);
+        }
+      } catch (err) {
+        console.error('Error fetching active subscription:', err);
+      }
+    };
+
+    const init = async () => {
+      setLoading(true);
+      await Promise.all([fetchPlans(), fetchActiveSubscription()]);
+      setLoading(false);
+    };
+
+    init();
   }, []);
 
   const specs = [
@@ -45,7 +63,7 @@ const Plans = () => {
   ];
 
   const handleChoosePlan = (planName) => {
-    navigate('/plan-details', { state: { planName } });
+    navigate('/plan-details', { state: { planName, activeSubscription } });
   };
 
   if (loading) {
@@ -78,21 +96,25 @@ const Plans = () => {
               <tr>
                 {/* Empty corner header cell */}
                 <th className="corner-th"></th>
-                {plans.map((plan, index) => (
-                  <th key={index} className="plan-header-th">
-                    <div className="plan-header-card">
-                      <span className="plan-name">{plan.name.toUpperCase()}</span>
-                      <span className="plan-price">₹{parseFloat(plan.price).toFixed(2)}</span>
-                      <span className="plan-duration">Duration: {plan.duration_days} {plan.duration_type === 'days' ? 'Days' : plan.duration_type}</span>
-                      <button
-                        className="btn-choose-plan"
-                        onClick={() => handleChoosePlan(plan.name)}
-                      >
-                        Choose Plan
-                      </button>
-                    </div>
-                  </th>
-                ))}
+                {plans.map((plan, index) => {
+                  const isCurrent = activeSubscription && activeSubscription.plan_id === plan.id;
+                  return (
+                    <th key={index} className="plan-header-th">
+                      <div className={`plan-header-card ${isCurrent ? 'current-plan-card' : ''}`}>
+                        {isCurrent && <span className="current-plan-indicator">ACTIVE</span>}
+                        <span className="plan-name">{plan.name.toUpperCase()}</span>
+                        <span className="plan-price">₹{parseFloat(plan.price).toFixed(2)}</span>
+                        <span className="plan-duration">Duration: {plan.duration_days} {plan.duration_type === 'days' ? 'Days' : plan.duration_type}</span>
+                        <button
+                          className={`btn-choose-plan ${isCurrent ? 'btn-current-plan' : ''}`}
+                          onClick={() => handleChoosePlan(plan.name)}
+                        >
+                          {isCurrent ? 'Current Plan' : 'Choose Plan'}
+                        </button>
+                      </div>
+                    </th>
+                  );
+                })}
               </tr>
             </thead>
             <tbody>
@@ -118,16 +140,19 @@ const Plans = () => {
               {/* Bottom Actions Row */}
               <tr className="bottom-actions-row">
                 <td className="spec-label-td"></td>
-                {plans.map((plan, index) => (
-                  <td key={index} className="spec-val-td action-cell">
-                    <button
-                      className="btn-choose-plan"
-                      onClick={() => handleChoosePlan(plan.name)}
-                    >
-                      Choose Plan
-                    </button>
-                  </td>
-                ))}
+                {plans.map((plan, index) => {
+                  const isCurrent = activeSubscription && activeSubscription.plan_id === plan.id;
+                  return (
+                    <td key={index} className="spec-val-td action-cell">
+                      <button
+                        className={`btn-choose-plan ${isCurrent ? 'btn-current-plan' : ''}`}
+                        onClick={() => handleChoosePlan(plan.name)}
+                      >
+                        {isCurrent ? 'Current Plan' : 'Choose Plan'}
+                      </button>
+                    </td>
+                  );
+                })}
               </tr>
             </tbody>
           </table>

@@ -277,3 +277,42 @@
   border-color: #066fd1;
   color: #ffffff;
 }
+
+/* Active Subscription Plan Styles */
+.current-plan-card {
+  position: relative;
+  border: 1px solid #10b981 !important;
+  border-radius: 8px;
+  background-color: rgba(16, 185, 129, 0.05);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.15) inset;
+}
+
+.current-plan-indicator {
+  position: absolute;
+  top: -12px;
+  right: 12px;
+  background-color: #10b981;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+  z-index: 2;
+}
+
+.btn-current-plan {
+  background-color: #10b981 !important;
+  border-color: #10b981 !important;
+  color: #ffffff !important;
+  cursor: default !important;
+  pointer-events: none;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.light-theme .current-plan-card {
+  background-color: rgba(16, 185, 129, 0.03);
+  border-color: #10b981 !important;
+}

@@ -44,8 +44,8 @@ const WalletBalance = () => {
     <div className="wallet-balance-page">
       <div className="page-header">
         <h1 className="page-title">Wallet Balance</h1>
-        <button className="btn btn-outline btn-transaction-history" onClick={() => navigate('/transaction-history')}>
-          <History size={16} /> Transaction History
+        <button className="btn btn-outline btn-transaction-history" onClick={() => navigate('/withdrawal-history')}>
+          <History size={16} /> Withdrawal History
         </button>
       </div>
 

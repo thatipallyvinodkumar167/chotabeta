@@ -426,7 +426,12 @@ export default function Notifications() {
                           </button>
  
                           <button
-                            onClick={() => setViewNotification(n)}
+                            onClick={() => {
+                              setViewNotification(n);
+                              if (!n.read_at) {
+                                handleMarkAsRead(n.id, n.read_at);
+                              }
+                            }}
                             className="w-[32px] h-[32px] inline-flex items-center justify-center rounded-lg border border-[#3b82f6] text-[#3b82f6] hover:bg-[#3b82f6]/15 active:scale-90 transition-all"
                             style={{ borderRadius: '8px' }}
                             title="View Details"

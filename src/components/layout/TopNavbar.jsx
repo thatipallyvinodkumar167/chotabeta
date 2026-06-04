@@ -26,9 +26,40 @@ const TopNavbar = ({ onThemeToggle, theme }) => {
     }
   };
 
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const loadUser = () => {
+      try {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+          setUser(JSON.parse(storedUser));
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    loadUser();
+    window.addEventListener('seller_user_updated', loadUser);
+    return () => window.removeEventListener('seller_user_updated', loadUser);
+  }, []);
+
   useEffect(() => {
     fetchNotifications();
   }, []);
+
+  const rawBaseUrl = API_BASE_URL.replace(/\/api\/seller$/, '').replace(/\/$/, '');
+  let avatarUrl = "https://ui-avatars.com/api/?name=Seller&background=random";
+  if (user) {
+    if (user.profile_image) {
+      avatarUrl = user.profile_image.startsWith('http')
+        ? user.profile_image
+        : `${rawBaseUrl}${user.profile_image}`;
+    } else if (user.name) {
+      avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random`;
+    }
+  }
+
   return (
     <div className="top-navbar">
       <div className="navbar-left">
@@ -143,7 +174,7 @@ const TopNavbar = ({ onThemeToggle, theme }) => {
             }}
           >
             <img 
-              src="https://ui-avatars.com/api/?name=Seller&background=random" 
+              src={avatarUrl} 
               alt="User Avatar" 
               className="avatar-img"
             />
