@@ -176,18 +176,39 @@ const Dashboard = () => {
     totalSales: '0.00',
     totalOrders: 0,
     totalProducts: 0,
-    walletBalance: '0.00'
+    walletBalance: '0.00',
+    periodOrdersCount: 0,
+    periodDeliveredOrdersCount: 0
   });
   const [chartData, setChartData] = useState([]);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [rawOrders, setRawOrders] = useState([]);
 
+  // Fetch all orders once on mount for any client-side list displays
+  useEffect(() => {
+    const fetchRawOrders = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/orders`);
+        const resData = await response.json();
+        if (resData.success) {
+          setRawOrders(resData.data || []);
+        }
+      } catch (err) {
+        console.error('Error fetching raw orders:', err);
+      }
+    };
+    fetchRawOrders();
+  }, []);
+
+  // Fetch stats dynamically when timeRange changes
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${API_BASE_URL}/dashboard/stats`);
+        const days = timeRange === '7days' ? 7 : timeRange === '3months' ? 90 : 30;
+        const response = await fetch(`${API_BASE_URL}/dashboard/stats?days=${days}`);
         const resData = await response.json();
         if (resData.success) {
           setStats(resData.data.stats);
@@ -204,7 +225,37 @@ const Dashboard = () => {
     };
 
     fetchDashboardData();
-  }, []);
+  }, [timeRange]);
+
+  const filteredOrders = React.useMemo(() => {
+    const now = Date.now();
+    return rawOrders.filter(order => {
+      const dateStr = order.orderTime;
+      if (!dateStr) return true;
+      const orderDate = new Date(dateStr).getTime();
+      const diff = now - orderDate;
+      
+      if (timeRange === '7days') return diff <= 7 * 24 * 60 * 60 * 1000;
+      if (timeRange === '30days') return diff <= 30 * 24 * 60 * 60 * 1000;
+      if (timeRange === '3months') return diff <= 90 * 24 * 60 * 60 * 1000;
+      return true;
+    });
+  }, [rawOrders, timeRange]);
+
+  const filteredRevenue = parseFloat(stats.totalSales) || 0;
+
+  const { totalOrdersCount, deliveredOrdersCount, conversionRate } = React.useMemo(() => {
+    const totalCount = stats.periodOrdersCount || 0;
+    const deliveredCount = stats.periodDeliveredOrdersCount || 0;
+    const rate = totalCount > 0 ? Math.round((deliveredCount / totalCount) * 100) : 0;
+    return {
+      totalOrdersCount: totalCount,
+      deliveredOrdersCount: deliveredCount,
+      conversionRate: rate
+    };
+  }, [stats.periodOrdersCount, stats.periodDeliveredOrdersCount]);
+
+
 
 
 
@@ -323,15 +374,15 @@ const Dashboard = () => {
               <div className="stat-label">
                 SALES <TimeRangeDropdown currentRange={timeRange} onRangeChange={setTimeRange} />
               </div>
-              <div className="stat-value">0%</div>
+              <div className="stat-value">{conversionRate}%</div>
             </div>
 
             <div className="conversion-rate">
-              Conversion rate <span className="rate-value">0% <TrendingUp size={14} /></span>
+              Conversion rate <span className="rate-value">{conversionRate}% <TrendingUp size={14} /></span>
             </div>
 
             <div className="delivery-stats">
-              0 delivered out of total orders <AnimatedCounter value={stats.totalOrders} />
+              {deliveredOrdersCount} delivered out of total orders {totalOrdersCount}
             </div>
             
             <div className="divider"></div>
@@ -349,12 +400,15 @@ const Dashboard = () => {
             <TimeRangeDropdown currentRange={timeRange} onRangeChange={setTimeRange} />
           </div>
           <div className="card-value-large">
-            <AnimatedCounter value={stats.totalSales} prefix="₹" decimals={2} />
+            <AnimatedCounter value={filteredRevenue} prefix="₹" decimals={2} />
           </div>
           <div className="card-footer">
-            <span className="footer-info text-green">31 Days <Calendar size={14} /></span>
+            <span className="footer-info text-green">
+              {timeRange === '7days' ? '7 Days' : timeRange === '30days' ? '30 Days' : timeRange === '3months' ? '3 Months' : ''} <Calendar size={14} />
+            </span>
           </div>
         </div>
+
 
         {/* Wallet Balance Card */}
         <div className="wallet-card main-card">
@@ -389,9 +443,9 @@ const Dashboard = () => {
           </div>
           <div className="mini-info">
             <div className="mini-value">
-              <AnimatedCounter value={86} suffix=" Items Sold" />
+              <AnimatedCounter value={stats.itemsSold || 0} suffix=" Items Sold" />
             </div>
-            <div className="mini-label">0 unsettled payments</div>
+            <div className="mini-label">{stats.unsettledPayments || 0} unsettled payments</div>
             <span className="navigate-link" onClick={() => navigate('/settlements')}>View Settlements &rarr;</span>
           </div>
         </div>
@@ -402,9 +456,9 @@ const Dashboard = () => {
           </div>
           <div className="mini-info">
             <div className="mini-value">
-              <AnimatedCounter value={stats.totalOrders} suffix=" Orders" />
+              <AnimatedCounter value={stats.totalOrders || 0} suffix=" Orders" />
             </div>
-            <div className="mini-label">0 Delivered</div>
+            <div className="mini-label">{stats.deliveredOrders || 0} Delivered</div>
             <span className="navigate-link" onClick={() => navigate('/orders')}>View Orders &rarr;</span>
           </div>
         </div>
@@ -414,8 +468,8 @@ const Dashboard = () => {
             <Star size={20} />
           </div>
           <div className="mini-info">
-            <div className="mini-value">0 Rating</div>
-            <div className="mini-label">0 reviews</div>
+            <div className="mini-value">{stats.avgRating || "0.0"} Rating</div>
+            <div className="mini-label">{stats.reviewsCount || 0} reviews</div>
             <span className="navigate-link" onClick={scrollToFeedback}>View Reviews &rarr;</span>
           </div>
         </div>
@@ -426,13 +480,14 @@ const Dashboard = () => {
           </div>
           <div className="mini-info">
             <div className="mini-value">
-              <AnimatedCounter value={stats.totalProducts} suffix=" Products" />
+              <AnimatedCounter value={stats.totalProducts || 0} suffix=" Products" />
             </div>
-            <div className="mini-label">140 new this week</div>
+            <div className="mini-label">{stats.newProductsThisWeek || 0} new this week</div>
             <span className="navigate-link" onClick={() => navigate('/products')}>View Products &rarr;</span>
           </div>
         </div>
       </div>
+
 
       {/* Third Row - Charts */}
       <div className="charts-grid">
@@ -541,7 +596,7 @@ const Dashboard = () => {
         <div className="section-header">
           <h2 className="section-title">Recent Orders</h2>
           <div className="header-actions">
-            <button className="btn btn-primary">View All Orders</button>
+            <button className="btn btn-primary" onClick={() => navigate('/orders')}>View All Orders</button>
             <button className="btn btn-outline">
               <RefreshCw size={16} /> Refresh
             </button>
