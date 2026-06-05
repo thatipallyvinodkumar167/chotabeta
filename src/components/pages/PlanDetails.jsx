@@ -25,6 +25,29 @@ const PlanDetails = () => {
   const [razorpayTab, setRazorpayTab] = useState('card');
   const [easebuzzTab, setEasebuzzTab] = useState('card');
 
+  // Payment credentials states (asked when upgrading)
+  const [cardNumber, setCardNumber] = useState('');
+  const [expiry, setExpiry] = useState('');
+  const [cvv, setCvv] = useState('');
+  const [cardHolder, setCardHolder] = useState('');
+  const [upiId, setUpiId] = useState('');
+  const [paymentError, setPaymentError] = useState('');
+
+  useEffect(() => {
+    if (showPaymentGateway) {
+      setCardNumber('');
+      setExpiry('');
+      setCvv('');
+      setCardHolder('');
+      setUpiId('');
+      setPaymentError('');
+    }
+  }, [showPaymentGateway]);
+
+  useEffect(() => {
+    setPaymentError('');
+  }, [razorpayTab, easebuzzTab, paymentGatewayName]);
+
   useEffect(() => {
     const fetchActiveSubscription = async () => {
       try {
@@ -81,21 +104,21 @@ const PlanDetails = () => {
     if (pName.includes('TRAIL')) {
       return [
         { name: 'Store Limit', total: 1 },
-        { name: 'Product Limit', total: 100 },
+        { name: 'Product Limit', total: 500 },
         { name: 'Role Limit', total: 2 },
         { name: 'System User Limit', total: 2 }
       ];
     } else if (pName.includes('BASIC')) {
       return [
-        { name: 'Store Limit', total: 1 },
-        { name: 'Product Limit', total: 100 },
-        { name: 'Role Limit', total: 2 },
-        { name: 'System User Limit', total: 2 }
+        { name: 'Store Limit', total: 2 },
+        { name: 'Product Limit', total: 1000 },
+        { name: 'Role Limit', total: 5 },
+        { name: 'System User Limit', total: 5 }
       ];
     } else if (pName.includes('STANDARD')) {
       return [
         { name: 'Store Limit', total: 2 },
-        { name: 'Product Limit', total: 1000 },
+        { name: 'Product Limit', total: 2000 },
         { name: 'Role Limit', total: 5 },
         { name: 'System User Limit', total: 5 }
       ];
@@ -166,6 +189,45 @@ const PlanDetails = () => {
   };
 
   const executePayment = async () => {
+    // Validate credentials (payment integrations)
+    if (paymentGatewayName === 'razorpay') {
+      if (razorpayTab === 'card') {
+        if (!cardNumber.trim() || !expiry.trim() || !cvv.trim() || !cardHolder.trim()) {
+          setPaymentError('Please fill in all card details (Card Number, Expiry, CVV, Card Holder Name)');
+          return;
+        }
+        if (cardNumber.replace(/\s/g, '').length < 16) {
+          setPaymentError('Please enter a valid 16-digit Card Number');
+          return;
+        }
+        if (cvv.trim().length < 3) {
+          setPaymentError('Please enter a valid CVV');
+          return;
+        }
+      } else if (razorpayTab === 'upi') {
+        if (!upiId.trim() || !upiId.includes('@')) {
+          setPaymentError('Please enter a valid UPI ID (e.g. username@upi)');
+          return;
+        }
+      }
+    } else if (paymentGatewayName === 'easebuzz') {
+      if (easebuzzTab === 'card') {
+        if (!cardNumber.trim() || !expiry.trim() || !cvv.trim()) {
+          setPaymentError('Please fill in all card details (Card Number, Expiry, CVV)');
+          return;
+        }
+        if (cardNumber.replace(/\s/g, '').length < 16) {
+          setPaymentError('Please enter a valid 16-digit Card Number');
+          return;
+        }
+        if (cvv.trim().length < 3) {
+          setPaymentError('Please enter a valid CVV');
+          return;
+        }
+      }
+    }
+
+    setPaymentError('');
     setPaymentStatus('processing');
     
     setTimeout(async () => {
@@ -445,21 +507,46 @@ const PlanDetails = () => {
                       <div className="tab-content-gw" style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                         <div className="form-group-gateway">
                           <label>Card Number</label>
-                          <input type="text" placeholder="4111 1111 1111 1111" defaultValue="4111 1111 1111 1111" className="gateway-input" />
+                          <input 
+                            type="text" 
+                            placeholder="4111 1111 1111 1111" 
+                            value={cardNumber} 
+                            onChange={(e) => setCardNumber(e.target.value)} 
+                            className="gateway-input" 
+                          />
                         </div>
                         <div className="form-row-gateway">
                           <div className="form-group-gateway half">
                             <label>Expiry</label>
-                            <input type="text" placeholder="12 / 29" defaultValue="12/29" className="gateway-input" />
+                            <input 
+                              type="text" 
+                              placeholder="12/29" 
+                              value={expiry} 
+                              onChange={(e) => setExpiry(e.target.value)} 
+                              className="gateway-input" 
+                            />
                           </div>
                           <div className="form-group-gateway half">
                             <label>CVV</label>
-                            <input type="text" placeholder="123" defaultValue="123" className="gateway-input" />
+                            <input 
+                              type="password" 
+                              placeholder="123" 
+                              value={cvv} 
+                              onChange={(e) => setCvv(e.target.value)} 
+                              className="gateway-input" 
+                              maxLength="3" 
+                            />
                           </div>
                         </div>
                         <div className="form-group-gateway">
                           <label>Card Holder Name</label>
-                          <input type="text" placeholder="Chota Beta Seller" defaultValue="Chota Beta Seller" className="gateway-input" />
+                          <input 
+                            type="text" 
+                            placeholder="Card Holder Name" 
+                            value={cardHolder} 
+                            onChange={(e) => setCardHolder(e.target.value)} 
+                            className="gateway-input" 
+                          />
                         </div>
                       </div>
                     )}
@@ -468,7 +555,13 @@ const PlanDetails = () => {
                       <div className="tab-content-gw" style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
                         <div className="form-group-gateway">
                           <label>Enter UPI ID</label>
-                          <input type="text" placeholder="username@upi" defaultValue="seller@okaxis" className="gateway-input" />
+                          <input 
+                            type="text" 
+                            placeholder="username@upi" 
+                            value={upiId} 
+                            onChange={(e) => setUpiId(e.target.value)} 
+                            className="gateway-input" 
+                          />
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '16px' }}>
                           <div style={{ width: '100px', height: '100px', backgroundColor: '#ffffff', padding: '6px', borderRadius: '4px' }}>
@@ -516,11 +609,39 @@ const PlanDetails = () => {
                     </div>
                     
                     {easebuzzTab === 'card' && (
-                      <div className="easebuzz-card-fields">
-                        <input type="text" placeholder="Card Number" defaultValue="4111 1111 1111 1111" className="gateway-input" />
+                      <div className="easebuzz-card-fields" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        <div className="form-group-gateway">
+                          <label>Card Number</label>
+                          <input 
+                            type="text" 
+                            placeholder="Card Number" 
+                            value={cardNumber} 
+                            onChange={(e) => setCardNumber(e.target.value)} 
+                            className="gateway-input" 
+                          />
+                        </div>
                         <div className="form-row-gateway">
-                          <input type="text" placeholder="MM/YY" defaultValue="12/29" className="gateway-input half" />
-                          <input type="text" placeholder="CVV" defaultValue="123" className="gateway-input half" />
+                          <div className="form-group-gateway half">
+                            <label>Expiry (MM/YY)</label>
+                            <input 
+                              type="text" 
+                              placeholder="MM/YY" 
+                              value={expiry} 
+                              onChange={(e) => setExpiry(e.target.value)} 
+                              className="gateway-input" 
+                            />
+                          </div>
+                          <div className="form-group-gateway half">
+                            <label>CVV</label>
+                            <input 
+                              type="password" 
+                              placeholder="CVV" 
+                              value={cvv} 
+                              onChange={(e) => setCvv(e.target.value)} 
+                              className="gateway-input" 
+                              maxLength="3" 
+                            />
+                          </div>
                         </div>
                       </div>
                     )}
@@ -535,6 +656,12 @@ const PlanDetails = () => {
                         </div>
                       </div>
                     )}
+                  </div>
+                )}
+
+                {paymentError && (
+                  <div className="payment-error-message" style={{ color: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', padding: '8px 12px', borderRadius: '6px', fontSize: '12px', marginBottom: '12px', textAlign: 'center', border: '1px solid rgba(239, 68, 68, 0.2)' }}>
+                    {paymentError}
                   </div>
                 )}
 

@@ -46,19 +46,19 @@ const Plans = () => {
   const specs = [
     {
       label: 'Store Limit',
-      values: ['1', '1', '2', '5', 'Unlimited']
+      values: ['1', '2', '2', '5', 'Unlimited']
     },
     {
       label: 'Product Limit',
-      values: ['1000', '100', '1000', 'Unlimited', 'Unlimited']
+      values: ['500', '1000', '2000', 'Unlimited', 'Unlimited']
     },
     {
       label: 'Role Limit',
-      values: ['5', '2', '5', '10', 'Unlimited']
+      values: ['2', '5', '5', '10', 'Unlimited']
     },
     {
       label: 'System User Limit',
-      values: ['5', '2', '5', '10', 'Unlimited']
+      values: ['2', '5', '5', '10', 'Unlimited']
     }
   ];
 

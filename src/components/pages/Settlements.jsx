@@ -54,14 +54,14 @@ const Settlements = () => {
     { id: 2, label: 'Order Details', key: 'description', visible: true },
     { id: 3, label: 'Marketplace Fee', key: 'fees', visible: true },
     { id: 4, label: 'Payout Amount', key: 'amount', visible: true },
-    { id: 5, label: 'Settlement Date', key: 'settled_at', visible: true }
+    { id: 5, label: 'Last Update', key: 'updated_at', visible: true }
   ];
 
   const returnColumns = [
     { id: 1, label: 'ID', key: 'id', visible: true },
     { id: 2, label: 'Details', key: 'description', visible: true },
     { id: 3, label: 'Debit Amount', key: 'amount', visible: true },
-    { id: 4, label: 'Settlement Date', key: 'settled_at', visible: true }
+    { id: 4, label: 'Last Update', key: 'updated_at', visible: true }
   ];
 
   const [visiblePayoutColumns, setVisiblePayoutColumns] = useState(payoutColumns);
@@ -197,17 +197,17 @@ const Settlements = () => {
 
     let csvContent = 'data:text/csv;charset=utf-8,';
     if (activeTab === 'payouts') {
-      csvContent += 'ID,Order Details,Marketplace Fees,Amount,Settlement Date,Status\n';
+      csvContent += 'ID,Order Details,Marketplace Fees,Amount,Last Update,Status\n';
       data.forEach(item => {
         const fees = (parseFloat(item.amount) * 0.03).toFixed(2);
-        const dateVal = item.settled_at || item.posted_at || item.updated_at || item.created_at;
+        const dateVal = item.updated_at;
         const dateLabel = dateVal ? new Date(dateVal).toLocaleString() : '';
         csvContent += `"${item.id}","${item.description || ''}","₹${fees}","₹${item.amount}","${dateLabel}","${item.settlement_status}"\n`;
       });
     } else {
-      csvContent += 'ID,Details,Debit Amount,Settlement Date,Status\n';
+      csvContent += 'ID,Details,Debit Amount,Last Update,Status\n';
       data.forEach(item => {
-        const dateVal = item.settled_at || item.posted_at || item.updated_at || item.created_at;
+        const dateVal = item.updated_at;
         const dateLabel = dateVal ? new Date(dateVal).toLocaleString() : '';
         csvContent += `"${item.id}","${item.description || ''}","₹${item.amount}","${dateLabel}","${item.settlement_status}"\n`;
       });
@@ -392,9 +392,9 @@ const Settlements = () => {
                               ₹{parseFloat(isPayout ? item.payoutAmount : item.amount).toFixed(2)}
                             </td>
                           )}
-                          {currentColumns.find(c => c.key === 'settled_at')?.visible && (
+                          {currentColumns.find(c => c.key === 'updated_at')?.visible && (
                             <td>
-                              {new Date(item.settled_at || item.posted_at || item.updated_at || item.created_at).toLocaleString('en-IN')}
+                              {item.updated_at ? new Date(item.updated_at).toLocaleString('en-IN') : '-'}
                             </td>
                           )}
                         </tr>

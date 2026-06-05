@@ -686,7 +686,7 @@ const Dashboard = () => {
                   </td>
                   <td>
                     <div className="actions-cell">
-                      <button className="btn-info-outline">
+                      <button className="btn-info-outline" onClick={() => navigate(`/orders/${order.order_id}`)}>
                         <SquarePen size={16} /> More Information
                       </button>
                     </div>

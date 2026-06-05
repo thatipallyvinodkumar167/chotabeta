@@ -468,7 +468,7 @@ const Orders = () => {
                     {visibleColumns.actions && (
                       <td>
                         <div className="actions-cell">
-                          <button className="btn-action-outline" onClick={() => handleOpenDetails(order)}>
+                          <button className="btn-action-outline" onClick={() => navigate(`/orders/${order.orderId}`)}>
                             <ExternalLink size={14} /> More Information
                           </button>
                           {(order.statusType === 'pending' || order.statusType === 'awaiting_store_response') && (

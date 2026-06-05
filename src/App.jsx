@@ -9,6 +9,7 @@ import WithdrawalHistory from './components/pages/WithdrawalHistory';
 import Settlements from './components/pages/Settlements';
 import SettlementHistory from './components/pages/SettlementHistory';
 import Orders from './components/pages/Orders';
+import OrderDetails from './components/pages/OrderDetails';
 import ReturnRequests from './components/pages/ReturnRequests';
 import Categories from './components/pages/Categories';
 import Brands from './components/pages/Brands';
@@ -107,6 +108,14 @@ function App() {
             element={
               <MainLayout onThemeToggle={toggleTheme} theme={theme}>
                 <Orders />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/orders/:id"
+            element={
+              <MainLayout onThemeToggle={toggleTheme} theme={theme}>
+                <OrderDetails />
               </MainLayout>
             }
           />
