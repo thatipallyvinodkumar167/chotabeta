@@ -177,12 +177,9 @@ const Dashboard = () => {
     totalOrders: 0,
     totalProducts: 0,
     walletBalance: '0.00',
-<<<<<<< HEAD
+    deliveredOrdersCount: 0,
     periodOrdersCount: 0,
     periodDeliveredOrdersCount: 0
-=======
-    deliveredOrdersCount: 0
->>>>>>> f91e845 (ad)
   });
   const [chartData, setChartData] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -211,12 +208,8 @@ const Dashboard = () => {
     const fetchDashboardData = async () => {
       try {
         setLoading(true);
-<<<<<<< HEAD
         const days = timeRange === '7days' ? 7 : timeRange === '3months' ? 90 : 30;
         const response = await fetch(`${API_BASE_URL}/dashboard/stats?days=${days}`);
-=======
-        const response = await fetch(`${API_BASE_URL}/dashboard/stats?range=${timeRange}`);
->>>>>>> f91e845 (ad)
         const resData = await response.json();
         if (resData.success) {
           setStats(resData.data.stats);
@@ -234,7 +227,6 @@ const Dashboard = () => {
 
     fetchDashboardData();
   }, [timeRange]);
-<<<<<<< HEAD
 
   const filteredOrders = React.useMemo(() => {
     const now = Date.now();
@@ -263,10 +255,6 @@ const Dashboard = () => {
       conversionRate: rate
     };
   }, [stats.periodOrdersCount, stats.periodDeliveredOrdersCount]);
-
-
-=======
->>>>>>> f91e845 (ad)
 
 
 
@@ -386,7 +374,6 @@ const Dashboard = () => {
               <div className="stat-label">
                 SALES <TimeRangeDropdown currentRange={timeRange} onRangeChange={setTimeRange} />
               </div>
-<<<<<<< HEAD
               <div className="stat-value">{conversionRate}%</div>
             </div>
 
@@ -396,17 +383,6 @@ const Dashboard = () => {
 
             <div className="delivery-stats">
               {deliveredOrdersCount} delivered out of total orders {totalOrdersCount}
-=======
-              <div className="stat-value">{deliveryPercentage}%</div>
-            </div>
-
-            <div className="conversion-rate">
-              Conversion rate <span className="rate-value">{deliveryPercentage}% <TrendingUp size={14} /></span>
-            </div>
-
-            <div className="delivery-stats">
-              {stats.deliveredOrdersCount} delivered out of total orders <AnimatedCounter value={stats.totalOrders} />
->>>>>>> f91e845 (ad)
             </div>
             
             <div className="divider"></div>
