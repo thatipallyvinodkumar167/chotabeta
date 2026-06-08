@@ -177,8 +177,12 @@ const Dashboard = () => {
     totalOrders: 0,
     totalProducts: 0,
     walletBalance: '0.00',
+<<<<<<< HEAD
     periodOrdersCount: 0,
     periodDeliveredOrdersCount: 0
+=======
+    deliveredOrdersCount: 0
+>>>>>>> f91e845 (ad)
   });
   const [chartData, setChartData] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -207,8 +211,12 @@ const Dashboard = () => {
     const fetchDashboardData = async () => {
       try {
         setLoading(true);
+<<<<<<< HEAD
         const days = timeRange === '7days' ? 7 : timeRange === '3months' ? 90 : 30;
         const response = await fetch(`${API_BASE_URL}/dashboard/stats?days=${days}`);
+=======
+        const response = await fetch(`${API_BASE_URL}/dashboard/stats?range=${timeRange}`);
+>>>>>>> f91e845 (ad)
         const resData = await response.json();
         if (resData.success) {
           setStats(resData.data.stats);
@@ -226,6 +234,7 @@ const Dashboard = () => {
 
     fetchDashboardData();
   }, [timeRange]);
+<<<<<<< HEAD
 
   const filteredOrders = React.useMemo(() => {
     const now = Date.now();
@@ -256,6 +265,8 @@ const Dashboard = () => {
   }, [stats.periodOrdersCount, stats.periodDeliveredOrdersCount]);
 
 
+=======
+>>>>>>> f91e845 (ad)
 
 
 
@@ -338,6 +349,10 @@ const Dashboard = () => {
   const todayData = chartData.find(c => c.date === todayStr);
   const todayEarning = todayData ? parseFloat(todayData.sales).toFixed(2) : '0.00';
 
+  const deliveryPercentage = (stats.totalOrders > 0 && stats.deliveredOrdersCount !== undefined) 
+    ? Math.round((Number(stats.deliveredOrdersCount) / Number(stats.totalOrders)) * 100) 
+    : 0;
+
   return (
     <div className="dashboard-content-inner">
       {error && (
@@ -349,12 +364,9 @@ const Dashboard = () => {
           borderRadius: '8px',
           marginBottom: '16px',
           fontSize: '14px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
+          fontWeight: 500
         }}>
-          <span><strong>Error loading dashboard:</strong> {error}</span>
-          <button onClick={() => setError(null)} style={{ background: 'none', border: 'none', color: '#b91c1c', cursor: 'pointer', fontWeight: 'bold', fontSize: '16px' }}>&times;</button>
+          {error}
         </div>
       )}
       {/* Top Row */}
@@ -374,6 +386,7 @@ const Dashboard = () => {
               <div className="stat-label">
                 SALES <TimeRangeDropdown currentRange={timeRange} onRangeChange={setTimeRange} />
               </div>
+<<<<<<< HEAD
               <div className="stat-value">{conversionRate}%</div>
             </div>
 
@@ -383,6 +396,17 @@ const Dashboard = () => {
 
             <div className="delivery-stats">
               {deliveredOrdersCount} delivered out of total orders {totalOrdersCount}
+=======
+              <div className="stat-value">{deliveryPercentage}%</div>
+            </div>
+
+            <div className="conversion-rate">
+              Conversion rate <span className="rate-value">{deliveryPercentage}% <TrendingUp size={14} /></span>
+            </div>
+
+            <div className="delivery-stats">
+              {stats.deliveredOrdersCount} delivered out of total orders <AnimatedCounter value={stats.totalOrders} />
+>>>>>>> f91e845 (ad)
             </div>
             
             <div className="divider"></div>
